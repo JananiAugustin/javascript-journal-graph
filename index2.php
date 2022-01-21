@@ -40,7 +40,10 @@ if(!$con){
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
+  
 <script type="text/javascript">
+
+
       var ctx = document.getElementById("chartjs_bar").getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'bar',
@@ -49,7 +52,7 @@ if(!$con){
                         datasets: [{
                             backgroundColor: [
                                "#5969ff",
-                                "#ff407b",
+                               "#ff407b",
                                 "#25d5f2",
                                 "#ffc750",
                             
@@ -59,6 +62,15 @@ if(!$con){
                         }]
                     },
                     options: {
+                        tooltips: {
+                            callbacks: {
+                                label:function(tooltipItem){
+                                                                     
+                                   
+                                    return  <?php echo json_encode($wtime); ?>;
+                                }
+                            }
+                        },
                         
                            legend: {
                         display: false,
