@@ -65,9 +65,9 @@ if(!$con){
                         tooltips: {
                             callbacks: {
                                 label:function(tooltipItem){
-                                                                     
+                                 <?php echo json_encode($wtime); ?>                            
+                                    return "$" + Number(tooltipItem.yLabel) + "time" ;
                                    
-                                    return  <?php echo json_encode($wtime); ?>;
                                 }
                             }
                         },
