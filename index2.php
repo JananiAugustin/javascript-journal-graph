@@ -48,7 +48,8 @@ if(!$con){
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels:<?php echo json_encode($dt); ?>, 
+                        labels:<?php echo json_encode($wtime); ?>, 
+                        
                         datasets: [{
                             backgroundColor: [
                                "#5969ff",
@@ -62,6 +63,13 @@ if(!$con){
                         }]
                     },
                     options: {
+                        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+                        },
                         tooltips: {
                             callbacks: {
                                 label:function(tooltipItem){
@@ -74,6 +82,8 @@ if(!$con){
                         
                            legend: {
                         display: false,
+                           
+                           
                        
  
                         labels: {
@@ -83,7 +93,8 @@ if(!$con){
                         }
                     },
  
- 
+                           
+                           
         }
     });
 </script>
