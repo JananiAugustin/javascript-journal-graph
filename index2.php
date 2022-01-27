@@ -42,22 +42,26 @@ if(!$con){
 
   
 <script type="text/javascript">
+const tstatus=<?php echo json_encode($time_status);?>;
+const backgroundcolor=[];
+for (var i=0; i<tstatus.length; i++) {
 
+    if(tstatus[i]=10){backgroundcolor.push('red')}
+    if(tstatus[i]=20){backgroundcolor.push('green')}
+    if(tstatus[i]=30){backgroundcolor.push('blue')}
+    if(tstatus[i]=40){backgroundcolor.push('grey')}
+}
+console.log(backgroundcolor);
 
       var ctx = document.getElementById("chartjs_bar").getContext('2d');
+      
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels:<?php echo json_encode($wtime); ?>, 
-                        
+                        labels:<?php echo json_encode($dt); ?>, 
                         datasets: [{
-                            backgroundColor: [
-                               "#5969ff",
-                               "#ff407b",
-                                "#25d5f2",
-                                "#ffc750",
-                            
-                            ], 
+                            backgroundColor: backgroundcolor,
+                                 
                             data:<?php echo json_encode($time_status); ?>,
                             
                         }]
@@ -70,13 +74,20 @@ if(!$con){
                 }
             }]
                         },
-                       
+                        tooltips: {
+                            callbacks: {
+                                label:function(tooltipItem){
+                                    const wtime=<?php echo json_encode($wtime);?>; 
+                                    
+                                    for (var i=0; i<wtime.length; i++) {
+                                    return wtime[i];
+                                    }
                                 }
                             }
                         },
                         
-                           
-                           
+                           legend: {
+                        display: false,
                        
  
                         labels: {
@@ -86,9 +97,8 @@ if(!$con){
                         }
                     },
  
-                           
-                           
-        
+ 
+        }
     });
 </script>
 </html>
