@@ -70,19 +70,11 @@ if(!$con){
                 }
             }]
                         },
-                        tooltips: {
-                            callbacks: {
-                                label: function(t, d) {
-         var dstLabel = d.datasets[t.datasetIndex].label;
-         var yLabel = t.yLabel;
-         return dstLabel + ': ' + yLabel + ' €';
-                                   
+                       
                                 }
                             }
                         },
                         
-                           legend: {
-                        display: false,
                            
                            
                        
@@ -96,7 +88,7 @@ if(!$con){
  
                            
                            
-        }
+        
     });
 </script>
 </html>
