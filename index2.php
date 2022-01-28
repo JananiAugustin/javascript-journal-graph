@@ -54,6 +54,9 @@ for (var i=0; i<tstatus.length; i++) {
 }
 console.log(backgroundcolor);
 
+
+
+
       var ctx = document.getElementById("chartjs_bar").getContext('2d');
       
                 var myChart = new Chart(ctx, {
@@ -75,17 +78,24 @@ console.log(backgroundcolor);
                 }
             }]
                         },
+                     
                         tooltips: {
-                            callbacks: {
-                                title:function(tooltipItem){
-                                    //return "title";
-                                    //console.log(tooltipItem.xLabel);
+
+                          callbacks: {
+                               
+
+                                label:function(tooltipItems, data){
+                                    const wtime=<?php echo json_encode($wtime);?>; 
                                     
-                                                                   
-                                   return `${tooltipItem.xLabel} Day: ${wtime[tooltipIem.dataIndex]}`;
-                                    
+                                    //for (i=0; i<wtime.length; i++) 
+                                   
+                                    {
+                                    return wtime[tooltipItems.index];                                
+                                    }
                                 }
-                            }
+                        
+                       
+                        }
                         },
                         
                            legend: {
@@ -99,8 +109,8 @@ console.log(backgroundcolor);
                         }
                     },
  
- 
-        }
+                        
+                    }
     });
 </script>
 </html>
