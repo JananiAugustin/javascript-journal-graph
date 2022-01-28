@@ -42,18 +42,26 @@ if(!$con){
 
   
 <script type="text/javascript">
-    const wtime=<?php echo json_encode($wtime);?>;
+ const wtime=<?php echo json_encode($wtime);?>;
 const tstatus=<?php echo json_encode($time_status);?>;
 const backgroundcolor=[];
-for (var i=0; i<tstatus.length; i++) {
+
+for (i=0; i<tstatus.length; i++) {
 
     if(tstatus[i]=10){backgroundcolor.push('red')}
-    if(tstatus[i]=20){backgroundcolor.push('green')}
-    if(tstatus[i]=30){backgroundcolor.push('blue')}
-    if(tstatus[i]=40){backgroundcolor.push('grey')}
+   if(tstatus[i]=20){backgroundcolor.push('green')}
+   if(tstatus[i]=30){backgroundcolor.push('blue')}
+   if(tstatus[i]=40){backgroundcolor.push('grey')}
 }
 console.log(backgroundcolor);
 
+/*$.each(backgroundcolor, function( index,value ) {
+  if(value=10){
+  	 backgroundcolor[index]="green";
+  }else{
+  	backgroundcolor[index]="red";
+  }
+});*/
 
 
 
@@ -88,10 +96,9 @@ console.log(backgroundcolor);
                                     const wtime=<?php echo json_encode($wtime);?>; 
                                     
                                     //for (i=0; i<wtime.length; i++) 
-                                   
-                                    {
+                                                                       
                                     return wtime[tooltipItems.index];                                
-                                    }
+                                    
                                 }
                         
                        
@@ -112,5 +119,28 @@ console.log(backgroundcolor);
                         
                     }
     });
+
+    //var colorChangeValue = 50; //set this to whatever is the deciding color change value
+    /*const tstatus=<?php echo json_encode($time_status);?>;
+var dataset = chartjs_bar.data.datasets[0];
+for (var i = 0; i < dataset.data.length; i++) {
+  if (dataset.data[i]=10) {
+    dataset.backgroundColor[i] = chartColors.yellow;
+  }
+  else if
+  (dataset.data[i]=20) {
+    dataset.backgroundColor[i] = chartColors.green;
+  }
+  else if
+  (dataset.data[i]=30) {
+    dataset.backgroundColor[i] = chartColors.blue;
+  }
+  else if
+  (dataset.data[i]=40) {
+    dataset.backgroundColor[i] = chartColors.red;
+  }
+}
+chartjs_bar.update();*/
+
 </script>
 </html>
