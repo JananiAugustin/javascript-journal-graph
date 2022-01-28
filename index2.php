@@ -42,6 +42,7 @@ if(!$con){
 
   
 <script type="text/javascript">
+    const wtime=<?php echo json_encode($wtime);?>;
 const tstatus=<?php echo json_encode($time_status);?>;
 const backgroundcolor=[];
 for (var i=0; i<tstatus.length; i++) {
@@ -76,12 +77,13 @@ console.log(backgroundcolor);
                         },
                         tooltips: {
                             callbacks: {
-                                label:function(tooltipItem){
-                                    const wtime=<?php echo json_encode($wtime);?>; 
+                                title:function(tooltipItem){
+                                    //return "title";
+                                    //console.log(tooltipItem.xLabel);
                                     
-                                    for (var i=0; i<wtime.length; i++) {
-                                    return wtime[i];
-                                    }
+                                                                   
+                                   return `${tooltipItem.xLabel} Day: ${wtime[tooltipIem.dataIndex]}`;
+                                    
                                 }
                             }
                         },
