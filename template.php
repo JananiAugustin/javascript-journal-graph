@@ -31,7 +31,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
        <!-- <a href="modify.php" class="btn btn-warning">Modify Wake up time</a>-->
        <a href="addwaketime.php" class="btn btn-danger ml-3">View missed wake up Time</a>
         <a href="report.php" class="btn btn-warning">Report</a>
-       <!-- <a href="graph.php" class="btn btn-danger ml-3">Graph</a>-->
+        <a href="index2_graph.php" class="btn btn-danger ml-3">WakeTme Chart</a>
 
         <!--<h3><p>Date: <span id="datetime"></span></p></h3>
 
