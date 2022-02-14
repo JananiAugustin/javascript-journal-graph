@@ -41,7 +41,7 @@ $pid=$_SESSION['id'];
                 <div class="card mt-5">
                               
                     <div class="card-header">
-                    <a href="graph_home.php" ><p style="text-align:left">Back</p></a> <h4>Graph View</h4>
+                    <a href="graph_yymm.php" ><p style="text-align:left">Back</p></a> <h4>Graph View</h4>
                     </div>
                     <div class="card-body">
 <canvas id="chartjs_bar"></canvas>
@@ -69,13 +69,15 @@ header ("location: graph_home.php");
 } else {
 $view_dt = trim($_POST["view_dt"]);
 $view_dt_to = trim($_POST["view_dt_to"]);
+echo "No data to show";
 }
 
 if (empty($view_dt_err)) {
 //Prepare the SELECT Query
 
-$sql="SELECT dt, time_status, waketime from dt_time where dt BETWEEN '$view_dt' AND '$view_dt_to' and id='$pid' and time_status!='null' order by dt ASC";
-    $result=mysqli_query($link,$sql);
+/*$sql="SELECT dt, time_status, waketime from dt_time where dt BETWEEN '$view_dt' AND '$view_dt_to' and id='$pid' and time_status!='null' order by dt ASC";*/
+$sql="SELECT dt, time_status, waketime from dt_time where MONTH(dt)='$view_dt_to' AND YEAR(dt)='$view_dt' and id='$pid' and time_status!='null' order by dt ASC";
+    $result=mysqli_query($link,$sql) or die(mysqli_error($link));
     $chart_data="";
     while ($row = mysqli_fetch_array($result)){
         $dt[]=$row['dt'];
