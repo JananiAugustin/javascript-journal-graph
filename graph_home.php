@@ -36,7 +36,7 @@ require_once "config.php";
                 <div class="card mt-5">
                 
                     <div class="card-header">
-                    <h4>Choose the date You want to view</h4>
+                    <h4>Choose to date to view your wake up graph</h4>
 
                     </div>
                     <div class="card-body">
@@ -46,7 +46,7 @@ require_once "config.php";
                    
                     <!--<form action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">-->
 
-                        <form action="view_display.php" method="POST">
+                        <form action="index2.php" method="POST">
                             
                 <div class="form-group mb-3">
 
@@ -78,7 +78,7 @@ require_once "config.php";
             </div>
 
                             <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-primary" value="View">
+                                <input type="submit" name="submit" class="btn btn-primary" value="Graph View">
                             </div>
 
                         </form>
