@@ -48,12 +48,12 @@ const backgroundcolor=[];
 //var dataset = chartjs_bar.data.datasets[0];
 for (i=0; i<tstatus.length; i++) {
 
-   if(tstatus[i]=10){backgroundcolor.push('red')}
-    if(tstatus[i]=20){backgroundcolor.push('green')}
-   if(tstatus[i]=30){backgroundcolor.push('orange')}
-    if(tstatus[i]=40){backgroundcolor.push('yellow')}
+   if(tstatus[i]=10){backgroundcolor.push('grey')}
+    if(tstatus[i]=20){backgroundcolor.push('grey')}
+   if(tstatus[i]=30){backgroundcolor.push('grey')}
+    if(tstatus[i]=40){backgroundcolor.push('grey')}
 }
-//console.log(backgroundcolor);
+console.log(backgroundcolor);
 
 /*$.each(backgroundcolor, function( index,value ) {
   if(value=10){
@@ -70,14 +70,15 @@ for (i=0; i<tstatus.length; i++) {
       var ctx = document.getElementById("chartjs_bar").getContext('2d');
       
                 var myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: {
                         labels:<?php echo json_encode($dt); ?>, 
                         datasets: [{
-                            backgroundColor: backgroundcolor,
+                            //backgroundColor: backgroundcolor,
                                  
                             data:<?php echo json_encode($time_status); ?>,
-                            
+                            fill:false,
+                           borderColor: 'rgb(75, 192, 192)',
                         }]
                     },
                     options: {
@@ -96,34 +97,44 @@ for (i=0; i<tstatus.length; i++) {
 
                                 label:function(tooltipItems, data){
                                     const wtime=<?php echo json_encode($wtime);?>; 
+                                    const tstatus=<?php echo json_encode($time_status);?>; 
+                                  
                                     
                                     //for (i=0; i<wtime.length; i++) 
                                                                        
                                     return wtime[tooltipItems.index];                                
                                     
                                 },
-                        afterTitle: function(tooltipItems, data){
+                        afterLabel: function(tooltipItems, data){
                                     const tstatus=<?php echo json_encode($time_status);?>; 
+                                    if (tstatus[tooltipItems.index]==10){
+                                      var display="Too Early";
+                                      return display;
+
+                                    }
+                                    else if (tstatus[tooltipItems.index]==20){
+                                      var display="Early";
+                                      return display;
+
+                                    }
+                                    else if(tstatus[tooltipItems.index]==30){
+                                      var display="Late";
+                                      return display;
+
+                                    }
+                                    else if(tstatus[tooltipItems.index]==40){
+                                      var display="Too Late";
+                                      return display;
+
+                                    }
                                     
-                                
-                                        if (tstatus[tooltipItems.index]<10){                             
-                                     return  "Too Early" ;
-                        }
-                        else if(tstatus[tooltipItems.index]<30 && tstatus[tooltipItems.index]>10){
-                          return  "Early" ;  
-                        }
-                        else if(tstatus[tooltipItems.index]<40 && tstatus[tooltipItems.index]>20){
-                          return  "Late" ;  
-                        }
-                        else if(tstatus[tooltipItems.index]<50 && tstatus[tooltipItems.index]>30 ){
-                          return  "Too Late" ;  
-                        }
-                        }
+                                                            }    
+                                        
                         }
                         },
                         
                            legend: {
-                        display: true,
+                        display: false,
                         
                        
  
